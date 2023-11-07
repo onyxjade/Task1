@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "task6",
+            "request": "launch",
+            "mainClass": "task6",
+            "projectName": "java_4e446f04"
+        },
+        {
+            "type": "java",
+            "name": "LargestNumberExample2",
+            "request": "launch",
+            "mainClass": "LargestNumberExample2",
+            "projectName": "java_4e446f04"
+        },
+        {
+            "type": "java",
             "name": "task5",
             "request": "launch",
             "mainClass": "task5",
