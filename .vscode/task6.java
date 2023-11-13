@@ -1,33 +1,24 @@
-// Java Program to Find the Biggest of 3 Numbers
+// Java Program to Find the Largest of three Numbers
+// Using Collections.max() method
 
-
+import java.util.*;
 
 class task6 {
 
-	// Function to find the biggest of three numbers
-	static int biggestOfThree(int x, int y, int z)
-	{
-
-		return z > (x > y ? x : y) ? z : ((x > y) ? x : y);
-	}
-
-	// Main driver function
 	public static void main(String[] args)
 	{
-
-		// Declaring variables for 3 numbers
 		int a, b, c;
-
-		// Variable holding the largest number
-		int largest;
+		// Considering random integers three numbers
 		a = 5;
 		b = 15;
 		c = 29;
-		// Calling the above function in main
-		largest = biggestOfThree(a, b, c);
+		ArrayList<Integer> x = new ArrayList<>();
+		x.add(a);
+		x.add(b);
+		x.add(c);
 
 		// Printing the largest number
-		System.out.println(largest
+		System.out.println(Collections.max(x)
 						+ " is the largest number.");
 	}
 }
