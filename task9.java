@@ -1,4 +1,4 @@
-import static java.lang.Math.*;
+import static java.lang.Math;
 
 public class task9 {
 
