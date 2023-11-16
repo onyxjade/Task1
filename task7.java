@@ -1,4 +1,4 @@
-class task7 {
+public class task7 {
   public static void main(String[] args) {
     
     // declare variables
@@ -15,8 +15,6 @@ class task7 {
 
     // division operator
     System.out.println("a / b = " + (a / b));
-
-    // modulo operator
-    System.out.println("a % b = " + (a % b));
+    
   }
 }
