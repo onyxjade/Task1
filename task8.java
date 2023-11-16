@@ -1,14 +1,26 @@
-//Java Program to demonstrate the use of continue statement
-//inside the for loop.
 public class task8 {
-public static void main(String[] args) {
-    //for loop
-    for(int i=1;i<=10;i++){
-    	if(i==5){
-    	    //using continue statement
-    		continue;//it will skip the rest statement
-    	}
-    	System.out.println(i);
+
+    public static void main(String[] args) {
+        int[] values = {4, 5, 10};
+        calculateCumulativeSum(values);
     }
-}
+
+    public static void calculateCumulativeSum(int... numbers) {
+        int cumulativeSum = 0;
+
+        for (int i = 0; i < numbers.length; i++) {
+            cumulativeSum += numbers[i];
+
+            System.out.printf("Total for parameter %d: %d = ", i + 1, cumulativeSum);
+
+            for (int j = 1; j <= numbers[i]; j++) {
+                System.out.print(j);
+                if (j < numbers[i]) {
+                    System.out.print("+");
+                }
+            }
+
+            System.out.println();
+        }
+    }
 }
