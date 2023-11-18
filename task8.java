@@ -1,26 +1,19 @@
 public class task8 {
-
     public static void main(String[] args) {
-        int[] values = {4, 5, 10};
-        calculateCumulativeSum(values);
+        int[] parameters = {4, 5, 10};
+        calculateCumulativeSum(parameters);
     }
 
-    public static void calculateCumulativeSum(int... numbers) {
+    public static void calculateCumulativeSum(int... params) {
+        int totalSum = 0;
         int cumulativeSum = 0;
 
-        for (int i = 0; i < numbers.length; i++) {
-            cumulativeSum += numbers[i];
+        for (int i = 0; i < params.length; i++) {
+            totalSum += params[i];
+            cumulativeSum += params[i];
 
-            System.out.printf("Total for parameter %d: %d = ", i + 1, cumulativeSum);
-
-            for (int j = 1; j <= numbers[i]; j++) {
-                System.out.print(j);
-                if (j < numbers[i]) {
-                    System.out.print("+");
-                }
-            }
-
-            System.out.println();
+            System.out.println("Total sum for parameter " + (i + 1) + ": " + totalSum);
+            System.out.println("Cumulative sum for parameter " + (i + 1) + ": " + cumulativeSum);
         }
     }
 }
