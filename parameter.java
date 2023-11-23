@@ -1,4 +1,4 @@
-public class parameters {
+public class parameter {
     public static void main(String[] args) {
         int[] parameters = {4, 5, 10};
         calculateCumulativeSum(parameters);
