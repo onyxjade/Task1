@@ -1,4 +1,4 @@
-public class task10 {
+public class books{
     private String title;
     private String author;
     private int year;
