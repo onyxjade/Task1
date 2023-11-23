@@ -1,4 +1,4 @@
-public class task8 {
+public class parameters {
     public static void main(String[] args) {
         int[] parameters = {4, 5, 10};
         calculateCumulativeSum(parameters);
