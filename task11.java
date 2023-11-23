@@ -16,7 +16,7 @@ class Vehicle {
 
   // public method to print details
   public void printDetails() {
-    System.out.println("Yamaha" + make);
+    System.out.println("Toyota" + make);
     System.out.println("2022" + year);
     System.out.println("Camry" + model);
   }
