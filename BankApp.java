@@ -25,54 +25,55 @@ public class BankApp {
         List<Logs> logger = new ArrayList<>();
         System.out.println(Arrays.toString(ua));
         BankApp ba = new BankApp();
-        Scanner input1 = new Scanner(System.in);
-        System.out.println("Welcome to Jcash\n Enter Id:\n");
-        ba.setUserid(input1.nextInt());
-        System.out.println("Enter Pin Code: ");
-        ba.setPinCode(input1.nextInt());
-        UserAccount user = ba.checkUser(ua,ba.getUserid(),ba.getPinCode());
-        if(user == null){
-            System.out.println("Wrong User ID or Pin Code");
-            logger.add(new Logs("Login failed",0,0,0,0,LocalDateTime.now()));
-            System.exit(0);
-        }
-        else
-            System.out.println("You are Logged in");
-        logger.add(new Logs("Login success",0,0,0,0,LocalDateTime.now()));
-        boolean menu = true;
+        try (var input1 = new Scanner(System.in)) {
+            System.out.println("Welcome to Jcash\n Enter Id:\n");
+            ba.setUserid(input1.nextInt());
+            System.out.println("Enter Pin Code: ");
+            ba.setPinCode(input1.nextInt());
+            UserAccount user = ba.checkUser(ua,ba.getUserid(),ba.getPinCode());
+            if(user == null){
+                System.out.println("Wrong User ID or Pin Code");
+                logger.add(new Logs("Login failed",0,0,0,0,LocalDateTime.now()));
+                System.exit(0);
+            }
+            else
+                System.out.println("You are Logged in");
+            logger.add(new Logs("Login success",0,0,0,0,LocalDateTime.now()));
+            boolean menu = true;
 MENU:   while(menu) {
-        System.out.println("Your account balance is : P"+user.getBalance());
-        System.out.println("1. Deposit(Cash  in)\n2. Money Transfer\n3.previous transactions\n 4. Logout");
-        int choice = input1.nextInt();
-            switch (choice) {
-                case 1:
-                    System.out.println("Enter amount to Cash in");
-                    user.deposit(input1.nextInt(),logger);
-                    System.out.println(user.toString());
-                    continue MENU;
-                case 2:
-                    System.out.println("Enter accountID");
-                    int accid = input1.nextInt();
-                    System.out.println("Enter amount to transfer + %1 charge:");
-                    double money = input1.nextInt();
-                    double fee = money * 0.01;
-                    if ((money + fee) <= user.getBalance()) {
-                        user.moneyTransfer(ua, user, accid, money, fee);
-                        System.out.println(Arrays.toString(ua));
-                    } else {
-                        System.out.println("insufficient funds");
+            System.out.println("Your account balance is : P"+user.getBalance());
+            System.out.println("1. Deposit(Cash  in)\n2. Money Transfer\n3.previous transactions\n 4. Logout");
+            int choice = input1.nextInt();
+                switch (choice) {
+                    case 1:
+                        System.out.println("Enter amount to Cash in");
+                        user.deposit(input1.nextInt(),logger);
+                        System.out.println(user.toString());
+                        continue MENU;
+                    case 2:
+                        System.out.println("Enter accountID");
+                        int accid = input1.nextInt();
+                        System.out.println("Enter amount to transfer + %1 charge:");
+                        double money = input1.nextInt();
+                        double fee = money * 0.01;
+                        if ((money + fee) <= user.getBalance()) {
+                            user.moneyTransfer(ua, user, accid, money, fee);
+                            System.out.println(Arrays.toString(ua));
+                        } else {
+                            System.out.println("insufficient funds");
+                            System.exit(0);
+                        }
+                        continue MENU;
+                    case 3:
+                        for(Logs log:logger){
+                            System.out.println(log);
+                        }
+                        continue MENU;
+                    case 4:
+                    default:
+                        menu = false;
                         System.exit(0);
-                    }
-                    continue MENU;
-                case 3:
-                    for(Logs log:logger){
-                        System.out.println(log);
-                    }
-                    continue MENU;
-                case 4:
-                default:
-                    menu = false;
-                    System.exit(0);
+                }
             }
         }
     }
