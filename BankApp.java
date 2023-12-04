@@ -25,7 +25,7 @@ public class BankApp {
         List<Logs> logger = new ArrayList<>();
         System.out.println(Arrays.toString(ua));
         BankApp ba = new BankApp();
-        try (var input1 = new Scanner(System.in)) {
+        try(var input1 = new Scanner(System.in)) {
             System.out.println("Welcome to Jcash\n Enter Id:\n");
             ba.setUserid(input1.nextInt());
             System.out.println("Enter Pin Code: ");
